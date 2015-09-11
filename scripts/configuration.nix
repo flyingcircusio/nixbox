@@ -13,7 +13,7 @@
   boot.loader.grub.device = "/dev/sda";
 
   # remove the fsck that runs at startup. It will always fail to run, stopping
-  # your boot until you press *. 
+  # your boot until you press *.
   boot.initrd.checkJournalingFS = false;
 
   # Vagrant cannot yet handle udev's new predictable interface names.
@@ -30,7 +30,7 @@
   services.dbus.enable    = true;
 
   # Enable guest additions.
-  services.virtualboxGuest.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
 
   # Creates a "vagrant" users with password-less sudo access
   users = {
