@@ -1,6 +1,15 @@
 {
+  "push": {
+    "name": "",
+    "vcs": true
+  },
+  "variables": {
+    "atlas_username": "{{env `ATLAS_USERNAME`}}",
+    "atlas_name": "{{env `ATLAS_NAME`}}"
+  },
   "builders": [
     {
+      "type": "virtualbox-iso",
       "boot_wait": "30s",
       "boot_command": [
         "root<enter>",
@@ -15,9 +24,8 @@
       "ssh_key_path": "./scripts/install_rsa",
       "ssh_port": 22,
       "ssh_username": "root",
-      "type": "virtualbox-iso",
-      "iso_url": "https://nixos.org/releases/nixos/14.12/nixos-14.12.496.5f7d374/nixos-minimal-14.12.496.5f7d374-x86_64-linux.iso",
-      "iso_checksum": "933aab9ddd3d02ea669313fb31a69e631d038926b1af03624e2602a9f78389bf",
+      "iso_url": "https://nixos.org/releases/nixos/15.09-small/nixos-15.09.309.afd7361/nixos-minimal-15.09.309.afd7361-x86_64-linux.iso",
+      "iso_checksum": "c2f0b2b50553d796435a376fae8037cebdf4a9e1ac6384ef0953dabedf16dc60",
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "virtualbox_version_file": ".vbox_version"
@@ -37,20 +45,14 @@
       },
       {
         "type": "atlas",
-        "only": [
-          "virtualbox-iso"
-        ],
-        "artifact": "zimbatm/nixos-14.12-x86_64",
+        "only": ["virtualbox-iso"],
+        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
         "artifact_type": "vagrant.box",
         "metadata": {
-          "provider": "virtualbox",
-          "description": "A minimal NixOS build based on the nixos-minimal-14.12.496.5f7d374-x86_64-linux.iso.\n\nSee https://github.com/zimbatm/nixbox for project details.\n"
+            "provider": "virtualbox",
+            "version": "0.0.3"
         }
       }
     ]
-  ],
-  "push": {
-    "name": "zimbatm/nixos-x86_64",
-    "vcs": true
-  }
+  ]
 }

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Make sure we are totally up to date
-nix-channel --add http://nixos.org/channels/nixos-14.12 nixos
+nix-channel --add http://nixos.org/releases/nixos/15.09-small nixos
 nix-channel --update
 nixos-rebuild switch --upgrade
 
