@@ -1,38 +1,30 @@
-NixOS boxes for Vagrant
-=======================
+Flying Circus NixOS boxes for Vagrant
+=====================================
+
+This is the builder for the NixOS base box for vagrant containing Flying Circus specifics
 
 [NixOS](http://nixos.org) is a linux distribution based on a purely functional
 package manager. This project builds [vagrant](http://vagrantup.com) .box
 images.
 
-Status
-------
-
-stable
-
 Usage
 -----
 
+XXX install nixos plugin
+
 ```
-vagrant init zimbatm/nixos-14.12-i686
-# or
-vagrant init zimbatm/nixos-14.12-x86_64
+vagrant init flyingcircus/nixos-15.09-x86_64
 ```
 
-Also have a look at the nixos vagrant plugin:
-https://github.com/oxdi/vagrant-nixos
 
 Building the images
 -------------------
 
-First install [packer](http://packer.io) and
-[virtualbox](https://www.virtualbox.org/)
+First install [packer](http://packer.io) and [virtualbox](https://www.virtualbox.org/)
 
 Then:
 
 ```
-packer build nixos-i686.json
-# or
 packer build nixos-x86_64.json
 ```
 
