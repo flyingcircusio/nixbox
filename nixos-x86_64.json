@@ -4,8 +4,8 @@
     "vcs": true
   },
   "variables": {
-    "atlas_username": "{{env `ATLAS_USERNAME`}}",
-    "atlas_name": "{{env `ATLAS_NAME`}}"
+    "atlas_username": "flyingcircus",
+    "atlas_name": "nixos-15.09-x86_64"
   },
   "builders": [
     {
@@ -50,7 +50,7 @@
         "artifact_type": "vagrant.box",
         "metadata": {
             "provider": "virtualbox",
-            "version": "0.0.3"
+            "version": "1.1.0"
         }
       }
     ]
