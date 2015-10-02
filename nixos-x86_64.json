@@ -24,8 +24,8 @@
       "ssh_key_path": "./scripts/install_rsa",
       "ssh_port": 22,
       "ssh_username": "root",
-      "iso_url": "https://nixos.org/releases/nixos/15.09-small/nixos-15.09.309.afd7361/nixos-minimal-15.09.309.afd7361-x86_64-linux.iso",
-      "iso_checksum": "c2f0b2b50553d796435a376fae8037cebdf4a9e1ac6384ef0953dabedf16dc60",
+      "iso_url": "https://nixos.org/releases/nixos/15.09-small/nixos-15.09.545.6856df5/nixos-minimal-15.09.545.6856df5-x86_64-linux.iso",
+      "iso_checksum": "cf9c2fe1c61c5754d5545871bdd456de326cb252c88a71ec1a8f735c254309a4",
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "virtualbox_version_file": ".vbox_version"
