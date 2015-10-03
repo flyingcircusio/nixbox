@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Make sure we are totally up to date
-nix-channel --add http://nixos.org/releases/nixos/15.09-small nixos
+nix-channel --remove nixos
+nix-channel --add http://cecil.theune.cc/jobset/flyingcircus/fc-15.09-dev/channel/latest nixos
 nix-channel --update
 nixos-rebuild switch --upgrade
 

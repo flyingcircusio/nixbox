@@ -24,15 +24,15 @@
       "ssh_key_path": "./scripts/install_rsa",
       "ssh_port": 22,
       "ssh_username": "root",
-      "iso_url": "https://nixos.org/releases/nixos/15.09-small/nixos-15.09.545.6856df5/nixos-minimal-15.09.545.6856df5-x86_64-linux.iso",
-      "iso_checksum": "cf9c2fe1c61c5754d5545871bdd456de326cb252c88a71ec1a8f735c254309a4",
+      "iso_url": "http://cecil.theune.cc/build/218/download/1/nixos-minimal-15.09.553.57c5b52-x86_64-linux.iso",
+      "iso_checksum": "e9538719bda0c022fb9053f03b44b8a6a4a5967c437bd38906a7e319870a80ad",
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
           ["modifyvm", "{{.Name}}", "--memory", "1024"]
         ],
-      "headless": true
+      "headless": false
       }
   ],
   "provisioners": [
