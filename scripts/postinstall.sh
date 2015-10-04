@@ -1,8 +1,10 @@
 #!/bin/sh
 
+mkdir -p /run/user/0/
+
 # Make sure we are totally up to date
 nix-channel --remove nixos
-nix-channel --add http://cecil.theune.cc/jobset/flyingcircus/fc-15.09-dev/channel/latest nixos
+nix-channel --add http://cecil.theune.cc/channels/branches/fc-15.09-dev nixos
 nix-channel --update
 nixos-rebuild switch --upgrade
 
