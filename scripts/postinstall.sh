@@ -6,6 +6,9 @@ mkdir -p /run/user/0/
 nix-channel --remove nixos
 nix-channel --add http://cecil.theune.cc/channels/branches/fc-15.09-dev nixos
 nix-channel --update
+
+cp /nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/flyingcircus/bootstrap-config.nix  /etc/nixos/configuration.nix
+
 nixos-rebuild switch --upgrade
 
 # Cleanup any previous generations and delete old packages that can be
