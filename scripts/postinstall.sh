@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo Running $0
+
 mkdir -p /run/user/0/
 
 # Make sure we are totally up to date
@@ -24,5 +26,6 @@ done
 rm -rf /root/.ssh /root/.packer_http
 
 # Zero out the disk (for better compression)
+echo Zeroing out disk ...
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -rf /EMPTY
