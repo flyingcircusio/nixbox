@@ -22,10 +22,13 @@ mount LABEL=nixos /mnt
 
 # Setup system
 nixos-generate-config --root /mnt
-curl -f "$packer_http/vagrant.nix" > /mnt/etc/nixos/vagrant.nix
-curl -f "$packer_http/configuration.nix" > /mnt/etc/nixos/configuration.nix
-curl -f "$packer_http/vagrant-base.nix" > /mnt/etc/nixos/vagrant-base.nix
 
+echo Copying FCIO configuration
+cp /nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/flyingcircus/bootstrap-config.nix  /mnt/etc/nixos/configuration.nix
+curl -f "$packer_http/vagrant.nix" > /mnt/etc/nixos/vagrant.nix
+
+
+echo Starting nixos-install
 ### Install ###
 nixos-install
 
