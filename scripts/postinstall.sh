@@ -4,6 +4,7 @@ echo Running $0
 
 mkdir -p /run/user/0/
 
+echo Setting channel and updating system
 # Make sure we are totally up to date
 nix-channel --remove nixos
 nix-channel --add http://cecil.theune.cc/channels/branches/fc-15.09-dev nixos
