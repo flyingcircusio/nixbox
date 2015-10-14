@@ -7,8 +7,8 @@ mkdir -p /run/user/0/
 echo Setting channel and updating system
 # Make sure we are totally up to date
 nix-channel --remove nixos
-nix-channel --add http://cecil.theune.cc/channels/branches/fc-15.09-dev nixos
-nix-channel --update
+nix-channel --add https://hydra.flyingcircus.io/channels/branches/fc-15.09-dev nixos
+nix-channel --updat
 nixos-rebuild switch --upgrade
 
 # Cleanup any previous generations and delete old packages that can be
