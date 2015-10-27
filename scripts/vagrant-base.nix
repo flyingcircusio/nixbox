@@ -16,6 +16,11 @@
   # http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/
   networking.usePredictableInterfaceNames = false;
 
+  nix.binaryCachePublicKeys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "flyingcircus.io-1:Rr9CwiPv8cdVf3EQu633IOTb6iJKnWbVfCC8x8gVz2o="
+  ];
+
   # Services to enable:
 
   # Enable the OpenSSH daemon.
