@@ -24,7 +24,8 @@ mount LABEL=nixos /mnt
 nixos-generate-config --root /mnt
 
 echo Copying FCIO configuration
-cp /nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/flyingcircus/bootstrap-config.nix  /mnt/etc/nixos/configuration.nix
+cp /nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/flyingcircus/files/etc_nixos_configuration.nix /mnt/etc/nixos/configuration.nix
+cp /nix/var/nix/profiles/per-user/root/channels/nixos/nixos/modules/flyingcircus/files/etc_nixos_local.nix /mnt/etc/nixos/local.nix
 curl -f "$packer_http/vagrant.nix" > /mnt/etc/nixos/vagrant.nix
 
 
