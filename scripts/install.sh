@@ -15,7 +15,7 @@ w
 FDISK
 
 # Create filesystem
-mkfs.ext4 -j -L nixos /dev/sda1
+mkfs.xfs -L nixos /dev/sda1
 
 # Mount filesystem
 mount LABEL=nixos /mnt
