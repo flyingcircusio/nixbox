@@ -53,8 +53,8 @@
         "artifact_type": "vagrant.box",
         "metadata": {
             "provider": "virtualbox",
-            "version": "131",
-            "description": "Update to FCIO dev evaluation 131"
+            "version": "164",
+            "description": "Update to FCIO dev evaluation 164"
         }
       }
     ]
