@@ -23,8 +23,8 @@
       "ssh_key_path": "./scripts/install_rsa",
       "ssh_port": 22,
       "ssh_username": "root",
-      "iso_url": "https://hydra.flyingcircus.io/build/1166/download/1/nixos-minimal-15.09.1060.a067a8d-x86_64-linux.iso",
-      "iso_checksum": "57b8deb2c2bf62b1f66d09386cf8637596241218d8c65afb731afb8e0cf63354",
+      "iso_url": "https://hydra.flyingcircus.io/build/1618/download/1/nixos-minimal-15.09.1278.07fea3e-x86_64-linux.iso",
+      "iso_checksum": "8b00e59f63306c2318d38111022f4bd6c955a46eda4c9300ea80f9cfcec51c4c",
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "virtualbox_version_file": ".vbox_version",
@@ -53,8 +53,8 @@
         "artifact_type": "vagrant.box",
         "metadata": {
             "provider": "virtualbox",
-            "version": "164",
-            "description": "Update to FCIO dev evaluation 164"
+            "version": "172",
+            "description": "Update to FCIO dev evaluation 172"
         }
       }
     ]
