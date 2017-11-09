@@ -7,7 +7,7 @@ mkdir -p /run/user/0/
 echo Setting channel and updating system
 # Make sure we are totally up to date
 nix-channel --remove nixos
-nix-channel --add https://hydra.flyingcircus.io/channels/branches/fc-15.09-dev nixos
+nix-channel --add https://hydra.flyingcircus.io/channels/branches/fc-15.09-production nixos
 nix-channel --update
 nixos-rebuild switch --upgrade
 

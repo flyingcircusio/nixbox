@@ -5,7 +5,8 @@
   },
   "variables": {
     "atlas_username": "flyingcircus",
-    "atlas_name": "nixos-15.09-x86_64"
+    "atlas_name": "nixos-15.09-x86_64",
+    "version": "3033"
   },
   "builders": [
     {
@@ -19,19 +20,19 @@
       ],
       "http_directory": "scripts",
       "iso_checksum_type": "sha256",
+      "iso_checksum": "9025244359ecaa0df9173a0bbfe57428472c07c77f6f6fc16fd3e38f13762c53",
       "shutdown_command": "shutdown -h now",
-      "ssh_key_path": "./scripts/install_rsa",
+      "ssh_private_key_file": "./scripts/install_rsa",
       "ssh_port": 22,
       "ssh_username": "root",
-      "iso_url": "https://hydra.flyingcircus.io/build/3594/download/1/nixos-minimal-15.09.1711.546cf06-x86_64-linux.iso",
-      "iso_checksum": "8e16b6f8142b41cd8aaf4b5bef6a825de3a61bd2d85ee9e2f49dd8020c0ed2fc",
+      "iso_url": "https://hydra.nixos.org/build/52491739/download/1/nixos-minimal-16.03.1349.dda40aa8d1-x86_64-linux.iso",
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
-          ["modifyvm", "{{.Name}}", "--memory", "1024"]
+          ["modifyvm", "{{.Name}}", "--memory", "1024", "--ioapic", "on", "--cpus", "2"]
         ],
-      "headless": false
+      "headless": true
       }
   ],
   "provisioners": [
@@ -47,15 +48,10 @@
         "keep_input_artifact": false
       },
       {
-        "type": "atlas",
-        "only": ["virtualbox-iso"],
-        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
-        "artifact_type": "vagrant.box",
-        "metadata": {
-            "provider": "virtualbox",
-            "version": "301",
-            "description": "Update to FCIO dev evaluation 319"
-        }
+        "type": "vagrant-cloud",
+        "box_tag": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+        "version": "{{user `version`}}",
+        "version_description": "Update to FCIO production evaluation {{user `version`}}"
       }
     ]
   ]

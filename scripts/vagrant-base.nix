@@ -5,7 +5,7 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.devices = "/dev/sda";
 
   # remove the fsck that runs at startup. It will always fail to run, stopping
   # your boot until you press *.
