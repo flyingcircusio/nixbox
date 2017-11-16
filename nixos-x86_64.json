@@ -6,7 +6,7 @@
   "variables": {
     "atlas_username": "flyingcircus",
     "atlas_name": "nixos-15.09-x86_64",
-    "version": "3033"
+    "version": "{{env `NIXOS_BUILD`}}"
   },
   "builders": [
     {
