@@ -6,31 +6,34 @@
   "variables": {
     "atlas_username": "flyingcircus",
     "atlas_name": "nixos-15.09-x86_64",
-    "version": "{{env `NIXOS_BUILD`}}"
+    "version": "{{env `NIXOS_BUILD`}}",
+    "revision": "{{env `NIXOS_REV`}}"
   },
   "builders": [
     {
       "type": "virtualbox-iso",
-      "boot_wait": "30s",
+      "disk_size": "80000",
+      "boot_wait": "40s",
       "boot_command": [
         "echo http://{{ .HTTPIP }}:{{ .HTTPPort}} > .packer_http<enter>",
         "mkdir -m 0700 .ssh<enter>",
         "curl $(cat .packer_http)/install_rsa.pub > .ssh/authorized_keys<enter>",
-        "start sshd<enter>"
+        "systemctl start sshd<enter>",
+	"<wait10>"
       ],
       "http_directory": "scripts",
       "iso_checksum_type": "sha256",
-      "iso_checksum": "9025244359ecaa0df9173a0bbfe57428472c07c77f6f6fc16fd3e38f13762c53",
+      "iso_checksum": "315513a5e5109361e3e85be870120e1133903e48c1827944b525cb5ad9b2cf97",
       "shutdown_command": "shutdown -h now",
       "ssh_private_key_file": "./scripts/install_rsa",
       "ssh_port": 22,
       "ssh_username": "root",
-      "iso_url": "https://hydra.nixos.org/build/52491739/download/1/nixos-minimal-16.03.1349.dda40aa8d1-x86_64-linux.iso",
+      "iso_url": "https://hydra.nixos.org/build/98718872/download/1/nixos-minimal-19.03.173279.878531fbdbb-x86_64-linux.iso",
       "guest_additions_mode": "disable",
       "guest_os_type": "Linux_64",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
-          ["modifyvm", "{{.Name}}", "--memory", "1024", "--ioapic", "on", "--cpus", "2"]
+          ["modifyvm", "{{.Name}}", "--memory", "4096", "--ioapic", "on", "--cpus", "4"]
         ],
       "headless": true
       }
@@ -38,7 +41,10 @@
   "provisioners": [
     {
       "type": "shell",
-      "script": "./scripts/install.sh"
+      "script": "./scripts/install.sh",
+      "environment_vars": [
+	      "NIXOS_REV={{user `revision`}}"
+      ]
     }
   ],
   "post-processors": [

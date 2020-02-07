@@ -1,45 +1,16 @@
 #!/bin/sh -e
 
-packer_http=$(cat .packer_http)
+mkdir -p /run/user/0/
 
-# Partition disk
-cat <<FDISK | fdisk /dev/sda
-n
+# Cleanup any previous generations and delete old packages that can be
+# pruned.
 
+for x in $(seq 0 2) ; do
+  nix-env --delete-generations old
+  nix-collect-garbage -d
+done
 
-
-
-a
-w
-
-FDISK
-
-# Create filesystem
-mkfs.xfs -L nixos /dev/sda1
-
-# Mount filesystem
-mount LABEL=nixos /mnt
-
-# Setup system
-nixos-generate-config --root /mnt
-
-echo Getting current code version
-cd /mnt
-nix-channel --update
-nix-env -iA nixos.gitMinimal --option binary-caches "https://cache.nixos.org https://hydra.flyingcircus.io" --option trusted-binary-caches "*"
-git clone https://github.com/flyingcircusio/nixpkgs
-cd nixpkgs
-git checkout fc-15.09-production
-
-
-echo Copying FCIO configuration
-cp /mnt/nixpkgs/nixos/modules/flyingcircus/files/etc_nixos_configuration.nix /mnt/etc/nixos/configuration.nix
-cp /mnt/nixpkgs/nixos/modules/flyingcircus/files/etc_nixos_local.nix /mnt/etc/nixos/local.nix
-curl -f "$packer_http/vagrant.nix" > /mnt/etc/nixos/vagrant.nix
-
-nixos-install -I nixpkgs=/nixpkgs --option binary-caches "https://cache.nixos.org https://hydra.flyingcircus.io" --option trusted-binary-caches "*" --show-trace
-
-rm -rf /mnt/nixpkgs
-
-### Cleanup ###
-curl "$packer_http/postinstall.sh" | nixos-install --chroot
+# Zero out the disk (for better compression)
+echo Zeroing out disk ...
+dd if=/dev/zero of=/EMPTY bs=1M || true
+rm -rf /EMPTY

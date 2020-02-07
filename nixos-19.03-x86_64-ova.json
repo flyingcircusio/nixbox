@@ -1,0 +1,48 @@
+{
+  "push": {
+    "name": "",
+    "vcs": true
+  },
+  "variables": {
+    "atlas_username": "flyingcircus",
+    "atlas_name": "nixos-19.03-dev-x86_64"
+  },
+  "builders": [
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "source.ova",
+      "http_directory": "scripts",
+      "shutdown_command": "sudo shutdown -h now",
+      "boot_wait": "20s",
+      "ssh_username": "vagrant",
+      "ssh_private_key_file": "vagrant_ssh_key",
+      "guest_additions_mode": "disable",
+      "virtualbox_version_file": ".vbox_version",
+      "vboxmanage": [
+          ["modifyvm", "{{.Name}}", "--memory", "4096", "--ioapic", "on", "--cpus", "4"]
+        ],
+      "headless": true
+      }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./scripts/install.sh",
+      "execute_command": "sudo -S env {{ .Vars }} {{ .Path }}"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "vagrant",
+        "keep_input_artifact": false
+      },
+      {
+        "type": "vagrant-cloud",
+        "box_tag": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+        "version": "{{user `version`}}",
+        "version_description": "Update to FCIO production evaluation {{user `version`}}"
+      }
+    ]
+  ]
+}
