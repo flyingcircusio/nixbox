@@ -5,7 +5,7 @@
   },
   "variables": {
     "atlas_username": "flyingcircus",
-    "atlas_name": "nixos-19.03-dev-x86_64"
+    "atlas_name": "nixos-20.09-dev-x86_64"
   },
   "builders": [
     {
